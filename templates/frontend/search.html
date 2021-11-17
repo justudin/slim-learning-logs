@@ -1,0 +1,30 @@
+{{>frontend/components/header.html}}
+
+<h1>Albums!</h1>
+
+<hr class="px-3"/>
+
+<form class="row g-3">
+    <div class="col-auto">
+        <label for="q" class="visually-hidden">Search</label>
+        <input type="text" class="form-control" name="q" id="q" value="{{query}}" placeholder="Search title/artist">
+    </div>
+    <div class="col-auto">
+        <button type="submit" class="btn btn-primary mb-3">Search</button>
+    </div>
+</form>
+
+<div class="container" id="albums">
+    <div class="row g-2">
+        {{#albums}}
+        <div class="col-3">
+            <div class="p-3 border bg-light">
+                <h3>{{title}}</h3>
+                <p>{{artist}}</p>
+            </div>
+        </div>
+        {{/albums}}
+    </div>
+</div>
+
+{{>frontend/components/footer.html}}

@@ -26,4 +26,6 @@ $app->get('/hello/{name}', '\App\Controller\HomeController:hello');
 
 $app->get('/albums', '\App\Controller\SearchController:default');
 
+$app->get('/search', '\App\Controller\SearchController:search');
+
 $app->run();
