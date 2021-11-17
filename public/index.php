@@ -28,4 +28,7 @@ $app->get('/albums', '\App\Controller\SearchController:default');
 
 $app->get('/search', '\App\Controller\SearchController:search');
 
+$app->get('/form', '\App\Controller\SearchController:form');
+$app->post('/form', '\App\Controller\SearchController:form');
+
 $app->run();
