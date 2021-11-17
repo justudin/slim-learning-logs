@@ -12,4 +12,9 @@ $app->get('/', function(Request $request, Response $response){
    return $response;
 });
 
+$app->get('/hello/{name}', function(Request $request, Response $response, array $args = []){
+    $response->getBody()->write('Hello '.$args['name'].' world!!');
+    return $response;
+});
+
 $app->run();
