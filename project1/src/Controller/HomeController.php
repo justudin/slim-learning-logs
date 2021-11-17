@@ -6,19 +6,10 @@ use Psr\Http\Message\ResponseInterface as Response;
 use Psr\Http\Message\ServerRequestInterface as Request;
 use Psr\Container\ContainerInterface;
 
-class HomeController
+class HomeController extends BaseController
 {
-    private ContainerInterface $ci;
-
-    public function __construct(ContainerInterface $ci)
-    {
-        $this->ci = $ci;
-    }
-
     public function homepage(Request $request, Response $response): Response
     {
-        $html = $this->ci->get('template')->render('frontend/homepage.html');
-        $response->getBody()->write($html);
-        return $response;
+        return $this->render($response, 'frontend/homepage.html');
     }
 }
