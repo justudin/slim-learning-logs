@@ -13,9 +13,12 @@ class ApiController extends BaseController
 
         $query = strtolower($request->getQueryParam('q'));
 
-        $albums = $this->getAlbumByQuery($query, $albums);
+        if($query){
+            $albums = $this->getAlbumByQuery($query, $albums);
+            return $response->withJson($albums);
+        }
 
-        return $response->withJson($albums);
+        return $response->withStatus(400)->withJson(['error' => 'invalid request']);
     }
 
     private function getAlbumByQuery(string $query, $albums)
