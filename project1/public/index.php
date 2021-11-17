@@ -20,8 +20,10 @@ AppFactory::setContainer($container);
 
 $app = AppFactory::create();
 
+$app->get('/', '\App\Controller\HomeController:homepage');
+
 $app->get('/hello/{name}', function (Request $request, Response $response, array $args=[]){
-   $html = $this->get('template')->render('hello.html', ['name' => ucfirst($args['name'])]);
+   $html = $this->get('template')->render('frontend/hello.html', ['name' => ucfirst($args['name'])]);
    $response->getBody()->write($html);
    return $response;
 });

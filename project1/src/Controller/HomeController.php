@@ -8,16 +8,16 @@ use Psr\Container\ContainerInterface;
 
 class HomeController
 {
-    private $ci;
+    private ContainerInterface $ci;
 
-    public function __construct($ci)
+    public function __construct(ContainerInterface $ci)
     {
         $this->ci = $ci;
     }
 
-    public function homepage(Request $request, Response $response)
+    public function homepage(Request $request, Response $response): Response
     {
-        $html = $this->ci->get('template')->render('homepage.html');
+        $html = $this->ci->get('template')->render('frontend/homepage.html');
         $response->getBody()->write($html);
         return $response;
     }
