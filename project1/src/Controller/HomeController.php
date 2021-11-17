@@ -12,4 +12,9 @@ class HomeController extends BaseController
     {
         return $this->render($response, 'frontend/homepage.html');
     }
+
+    public function hello(Request $request, Response $response, array $args = []): Response
+    {
+        return $this->render($response, 'frontend/hello.html', ['name'=> ucfirst($args['name'])]);
+    }
 }
