@@ -13,15 +13,15 @@ class AuthController extends BaseController
 
     public function loginAction(Request $request, Response $response)
     {
-        $this->ci->get('session')->set('userEmail', $request->getParam('email'));
+        $this->session->set('userEmail', $request->getParam('email'));
         return $response->withRedirect('/dashboard');
     }
 
     public function logoutAction(Request $request, Response $response)
     {
-        $this->ci->get('session')->delete('userEmail');
+        $this->session->delete('userEmail');
         // Destroy session
-        $this->ci->get('session')::destroy();
+        $this->session::destroy();
 
         return $response->withRedirect('/login');
     }

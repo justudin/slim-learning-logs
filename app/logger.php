@@ -9,7 +9,7 @@ use Monolog\Processor\UidProcessor;
 use Psr\Container\ContainerInterface;
 
 return function (Container $container) {
-    $container->set(LoggerInterface::class, function (ContainerInterface $container) {
+    $container->set('logger', function (ContainerInterface $container) {
         $settings = $container->get('settings')['logger'];
 
         $logger = new Logger($settings['name']);

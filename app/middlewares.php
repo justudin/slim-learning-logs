@@ -3,12 +3,12 @@ declare(strict_types=1);
 
 use Slim\App;
 use Slim\Middleware\Session;
-use DI\Container;
 use Slim\Exception\HttpNotFoundException;
 use Psr\Http\Message\ServerRequestInterface;
 use App\Controller\ExceptionController;
 
-return function (App $app, Container $container){
+return function (App $app){
+    $container = $app->getContainer();
 
     $app->add(new Session);
 

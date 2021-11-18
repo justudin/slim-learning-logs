@@ -9,6 +9,8 @@ class HomeController extends BaseController
 {
     public function homepage(Response $response): Response
     {
+        //$this->logger->info("just access homepage!");
+
         return $this->render($response, 'frontend/homepage.html');
     }
 
