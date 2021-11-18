@@ -2,16 +2,23 @@
 declare(strict_types=1);
 
 use DI\Container;
+use Monolog\Logger;
 
 return function (Container $container) {
     // settings
-    //development mode:  true, true, true
-    //production mode: false, true, true
     $container->set('settings', function(){
+
+        //development mode:  true, true, true
+        //production mode: false, false, true
         return [
             'displayErrorDetails' => true,
             'logErrorDetails' => true,
             'logErrors' => true,
+            'logger' => [
+                'name' => 'app-logger',
+                'path' => __DIR__.'/../logs/app.log',
+                'level' => Logger::DEBUG,
+            ],
         ];
     });
 

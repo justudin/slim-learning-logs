@@ -11,8 +11,11 @@ $container =  new Container();
 $container_settings = require __DIR__.'/../app/containers.php';
 $container_settings($container);
 
-AppFactory::setContainer($container);
+//use logger
+$logger = require __DIR__.'/../app/logger.php';
+$logger($container);
 
+AppFactory::setContainer($container);
 $app = AppFactory::create();
 
 //use middleware
