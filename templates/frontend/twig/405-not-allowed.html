@@ -1,0 +1,8 @@
+{% extends "layout.html" %}
+{% block title %} 405: Action Not Allowed! {% endblock %}
+{% block body %}
+
+<h1>405: Action Not Allowed!</h1>
+<p>We're sorry, you are not allowed to perform this action!. <br/><a href="{{ url_for('homepage') }}">Return to homepage</a> </p>
+
+{% endblock %}
