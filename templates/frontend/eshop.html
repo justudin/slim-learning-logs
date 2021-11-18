@@ -1,0 +1,20 @@
+{{>frontend/components/header.html}}
+
+<h1>Bike e-Shop!</h1>
+
+<hr class="px-3"/>
+<div class="container" id="bikes">
+    <div class="row g-2">
+        {{#bikes}}
+        <div class="col-3">
+            <div class="p-3 border bg-light">
+                <p>🚲</p>
+                <h3>{{name}}</h3>
+                <p>{{type}}</p>
+            </div>
+        </div>
+        {{/bikes}}
+    </div>
+</div>
+
+{{>frontend/components/footer.html}}

@@ -26,4 +26,6 @@ $app->get('/search', '\App\Controller\SearchController:search');
 $app->get('/form', '\App\Controller\SearchController:form');
 $app->post('/form', '\App\Controller\SearchController:form');
 $app->get('/api', '\App\Controller\ApiController:search');
+$app->get('/shop', '\App\Controller\ShopController:default');
+
 $app->run();
