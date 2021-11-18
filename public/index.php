@@ -28,6 +28,9 @@ $app->post('/form', '\App\Controller\SearchController:form');
 $app->get('/api', '\App\Controller\ApiController:search');
 $app->get('/shop', '\App\Controller\ShopController:default');
 $app->get('/shop/details/{id:[0-9]+}', '\App\Controller\ShopController:details');
+$app->get('/login', '\App\Controller\AuthController:login');
+$app->post('/login', '\App\Controller\AuthController:login');
+$app->get('/dashboard', '\App\Controller\DashboardController:default');
 
 //development mode:  true, true, true
 //production mode: false, true, true
