@@ -7,12 +7,14 @@
     <div class="row g-2">
         {{#bikes}}
         <div class="col-3">
+            <a href="/shop/details/{{id}}" style="text-decoration: none;">
             <div class="p-3 border bg-light">
-                <p>🚲</p>
-                <h3>{{name}}</h3>
+                <h3>🚲 {{name}}</h3>
                 <p>{{type}}</p>
             </div>
+            </a>
         </div>
+
         {{/bikes}}
     </div>
 </div>
