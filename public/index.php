@@ -33,4 +33,13 @@ $app->get('/shop/details/{id:[0-9]+}', '\App\Controller\ShopController:details')
 //production mode: false, true, true
 $errorMiddleware = $app->addErrorMiddleware(true, true, true);
 
+//custom error template
+$errorMiddleware->setErrorHandler(
+    Slim\Exception\HttpNotFoundException::class,
+    function(\Psr\Http\Message\ServerRequestInterface $request) use ($container){
+        $exceptionController = new App\Controller\ExceptionController($container);
+        return $exceptionController->notFound($request);
+    }
+);
+
 $app->run();
