@@ -1,7 +1,7 @@
 <?php
 
-use Slim\Factory\AppFactory;
 use DI\Container;
+use DI\Bridge\Slim\Bridge as AppFactory;
 
 require __DIR__ . '/../vendor/autoload.php';
 
@@ -15,8 +15,7 @@ $container_settings($container);
 $logger = require __DIR__.'/../app/logger.php';
 $logger($container);
 
-AppFactory::setContainer($container);
-$app = AppFactory::create();
+$app = AppFactory::create($container);
 
 //use middleware
 $middlewares = require __DIR__ . '/../app/middlewares.php';

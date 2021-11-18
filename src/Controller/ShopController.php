@@ -14,11 +14,11 @@ class ShopController extends BaseController
         return $this->render($response, 'frontend/eshop.html', ['bikes' => $bikes]);
     }
 
-    public function details(Request $request, Response $response, array $args = []): Response
+    public function details(Request $request, Response $response, $id): Response
     {
         $bikes = json_decode(file_get_contents(__DIR__ . '/../../data/bikes.json'), true);
 
-        $bike_id = (int) $args['id'];
+        $bike_id = (int) $id;
 
         $key_data = array_search($bike_id, array_column($bikes, 'id'));
 
