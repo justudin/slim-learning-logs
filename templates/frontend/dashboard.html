@@ -3,7 +3,11 @@
 <h1>Welcome to dashboard area!</h1>
 <hr class="px-3"/>
 <div class="alert alert-success" role="alert">
-    <p>You have successfully signed in!!</p>
+    <p>You are logged in as {{ userEmail }}.
+    <form method="post" action="/logout">
+    <button type="submit" class="btn btn-primary btn-lg">Logout</button>
+    </form>
+    </p>
 </div>
 
 

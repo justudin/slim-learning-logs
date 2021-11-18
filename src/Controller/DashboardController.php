@@ -8,6 +8,7 @@ class DashboardController extends BaseController
 {
     public function default(Request $request, Response $response)
     {
-        return $this->render($response, 'frontend/dashboard.html');
+        $userEmail = $this->ci->get('session')->get('userEmail');
+        return $this->render($response, 'frontend/dashboard.html', ['userEmail' => $userEmail]);
     }
 }
