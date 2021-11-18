@@ -2,58 +2,26 @@
 
 use Slim\Factory\AppFactory;
 use DI\Container;
+
 require __DIR__ . '/../vendor/autoload.php';
 
 $container =  new Container();
 
-$container->set('template', function (){
-    return new Mustache_Engine([
-        'loader' => new Mustache_Loader_FilesystemLoader(
-            __DIR__. '/../templates',
-            ['extension' => '']
-        )
-    ]);
-});
-
-$container->set('session', function (){
-   return new \SlimSession\Helper();
-});
+//use container_settings
+$container_settings = require __DIR__.'/../app/containers.php';
+$container_settings($container);
 
 AppFactory::setContainer($container);
 
 $app = AppFactory::create();
 
-$app->add(new \Slim\Middleware\Session);
+//use middleware
+$middlewares = require __DIR__ . '/../app/middlewares.php';
+$middlewares($app, $container);
 
-$app->get('/', '\App\Controller\HomeController:homepage');
-$app->get('/hello/{name}', '\App\Controller\HomeController:hello');
-$app->get('/albums', '\App\Controller\SearchController:default');
-$app->get('/search', '\App\Controller\SearchController:search');
-$app->get('/form', '\App\Controller\SearchController:form');
-$app->post('/form', '\App\Controller\SearchController:form');
-$app->get('/api', '\App\Controller\ApiController:search');
-$app->get('/shop', '\App\Controller\ShopController:default');
-$app->get('/shop/details/{id:[0-9]+}', '\App\Controller\ShopController:details');
-$app->get('/login', '\App\Controller\AuthController:login');
-$app->post('/login', '\App\Controller\AuthController:loginAction');
-$app->post('/logout', '\App\Controller\AuthController:logoutAction');
+//use routes
+$routes = require  __DIR__.'/../app/routes.php';
+$routes($app);
 
-$app->group('/dashboard', function($app){
-    $app->get('', '\App\Controller\DashboardController:default');
-    $app->get('/membership', '\App\Controller\DashboardController:membership');
-})->add(new App\Middleware\AuthMiddleware($app->getContainer()->get('session')));
-
-//development mode:  true, true, true
-//production mode: false, true, true
-$errorMiddleware = $app->addErrorMiddleware(true, true, true);
-
-//custom error template
-$errorMiddleware->setErrorHandler(
-    Slim\Exception\HttpNotFoundException::class,
-    function(\Psr\Http\Message\ServerRequestInterface $request) use ($container){
-        $exceptionController = new App\Controller\ExceptionController($container);
-        return $exceptionController->notFound($request);
-    }
-);
-
+//run this app!
 $app->run();
