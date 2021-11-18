@@ -11,4 +11,10 @@ class DashboardController extends BaseController
         $userEmail = $this->ci->get('session')->get('userEmail');
         return $this->render($response, 'frontend/dashboard.html', ['userEmail' => $userEmail]);
     }
+
+    public function membership(Request $request, Response $response)
+    {
+        $userEmail = $this->ci->get('session')->get('userEmail');
+        return $this->render($response, 'frontend/status.html', ['userEmail' => $userEmail]);
+    }
 }

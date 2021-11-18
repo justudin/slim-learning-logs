@@ -37,7 +37,11 @@ $app->get('/shop/details/{id:[0-9]+}', '\App\Controller\ShopController:details')
 $app->get('/login', '\App\Controller\AuthController:login');
 $app->post('/login', '\App\Controller\AuthController:loginAction');
 $app->post('/logout', '\App\Controller\AuthController:logoutAction');
-$app->get('/dashboard', '\App\Controller\DashboardController:default')->add(new App\Middleware\AuthMiddleware($app->getContainer()->get('session')));
+
+$app->group('/dashboard', function($app){
+    $app->get('', '\App\Controller\DashboardController:default');
+    $app->get('/membership', '\App\Controller\DashboardController:membership');
+})->add(new App\Middleware\AuthMiddleware($app->getContainer()->get('session')));
 
 //development mode:  true, true, true
 //production mode: false, true, true
