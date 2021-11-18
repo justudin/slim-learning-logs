@@ -11,7 +11,7 @@ class ShopController extends BaseController
     public function default(Request $request, Response $response): Response
     {
         $bikes = json_decode(file_get_contents(__DIR__ . '/../../data/bikes.json'), true);
-        return $this->render($response, 'frontend/eshop.html', ['bikes' => $bikes]);
+        return $this->render($response, 'eshop.html', ['bikes' => $bikes]);
     }
 
     public function details(Request $request, Response $response, $id): Response
@@ -24,6 +24,6 @@ class ShopController extends BaseController
 
         if($key_data === false) throw new HttpNotFoundException($request, $response);
 
-        return $this->render($response, 'frontend/eshop-detail.html', ['bike' => $bikes[$key_data]]);
+        return $this->render($response, 'eshop-detail.html', ['bike' => $bikes[$key_data]]);
     }
 }

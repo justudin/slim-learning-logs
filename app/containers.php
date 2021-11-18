@@ -3,6 +3,7 @@ declare(strict_types=1);
 
 use DI\Container;
 use Monolog\Logger;
+use Slim\Views\Twig;
 
 return function (Container $container) {
     // settings
@@ -22,14 +23,14 @@ return function (Container $container) {
         ];
     });
 
-    //template engine
-    $container->set('template', function (){
-        return new Mustache_Engine([
-            'loader' => new Mustache_Loader_FilesystemLoader(
-                __DIR__. '/../templates',
-                ['extension' => '']
-            )
-        ]);
+    //template engine twig
+    $container->set('template_twig', function (){
+        return Twig::create(
+            __DIR__. '/../templates/frontend/twig',[
+            'cache' => __DIR__ . '/../cache/templates/twig',
+            'debug' => true,
+            'auto_reload' => true
+            ]);
     });
 
     //session

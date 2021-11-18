@@ -8,7 +8,7 @@ class AuthController extends BaseController
 {
     public function login(Request $request, Response $response)
     {
-        return $this->render($response, 'frontend/login.html');
+        return $this->render($response, 'login.html');
     }
 
     public function loginAction(Request $request, Response $response)

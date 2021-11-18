@@ -9,12 +9,12 @@ class DashboardController extends BaseController
     public function default(Request $request, Response $response)
     {
         $userEmail = $this->session->get('userEmail');
-        return $this->render($response, 'frontend/dashboard.html', ['userEmail' => $userEmail]);
+        return $this->render($response, 'dashboard.html', ['userEmail' => $userEmail]);
     }
 
     public function membership(Request $request, Response $response)
     {
         $userEmail = $this->session->get('userEmail');
-        return $this->render($response, 'frontend/status.html', ['userEmail' => $userEmail]);
+        return $this->render($response, 'status.html', ['userEmail' => $userEmail]);
     }
 }

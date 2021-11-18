@@ -9,6 +9,6 @@ class ExceptionController extends BaseController
     public function notFound(Request $request)
     {
         $response = new Response();
-        return $this->render($response, 'frontend/404-error.html');
+        return $this->render($response, '404-error.html');
     }
 }

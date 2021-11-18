@@ -11,11 +11,11 @@ class HomeController extends BaseController
     {
         //$this->logger->info("just access homepage!");
 
-        return $this->render($response, 'frontend/homepage.html');
+        return $this->render($response, 'homepage.html');
     }
 
     public function hello(Response $response, $name): Response
     {
-        return $this->render($response, 'frontend/hello.html', ['name'=> ucfirst($name)]);
+        return $this->render($response, 'hello.html', ['name'=> ucfirst($name)]);
     }
 }

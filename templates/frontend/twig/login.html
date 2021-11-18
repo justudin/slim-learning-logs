@@ -1,19 +1,24 @@
-{{>frontend/components/header.html}}
+{% extends "layout.html" %}
+
+{% block body %}
 
 <h1>Please login first!</h1>
+
 <hr class="px-3"/>
 <form action="" method="post">
-<div class="form-floating mb-3">
+  <div class="form-floating mb-3">
     <input type="email" class="form-control" name="email" id="email" placeholder="name@example.com" required="true">
     <label for="email">Email address</label>
-</div>
-<div class="form-floating mb-3">
+  </div>
+  <div class="form-floating mb-3">
     <input type="password" class="form-control" id="password" name="password" placeholder="Password">
     <label for="password">Password</label>
-</div>
-<div class="form-floating mb-3">
+  </div>
+  <div class="form-floating mb-3">
     <button type="submit" class="btn btn-primary btn-lg">Login</button>
-</div>
+  </div>
 </form>
 
-{{>frontend/components/footer.html}}
+<a href="{{ url_for('homepage') }}">Return to homepage</a> </p>
+
+{% endblock %}

@@ -10,7 +10,7 @@ class SearchController extends BaseController
     public function default(Request $request, Response $response): Response
     {
         $albums = json_decode(file_get_contents(__DIR__ . '/../../data/albums.json'), true);
-        return $this->render($response, 'frontend/album.html', ['albums' => $albums]);
+        return $this->render($response, 'album.html', ['albums' => $albums]);
     }
 
     public function search(Request $request, Response $response): Response
@@ -21,7 +21,7 @@ class SearchController extends BaseController
 
         $albums = $this->getAlbumByQuery($query, $albums);
 
-        return $this->render($response, 'frontend/search.html', ['albums' => $albums, 'query' => $query]);
+        return $this->render($response, 'search.html', ['albums' => $albums, 'query' => $query]);
     }
 
     public function form(Request $request, Response $response): Response
@@ -32,7 +32,7 @@ class SearchController extends BaseController
 
         $albums = $this->getAlbumByQuery($query, $albums);
 
-        return $this->render($response, 'frontend/form.html', ['albums' => $albums, 'query' => $query]);
+        return $this->render($response, 'form.html', ['albums' => $albums, 'query' => $query]);
     }
 
     private function getAlbumByQuery(string $query, $albums)

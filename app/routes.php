@@ -13,17 +13,17 @@ use Slim\Interfaces\RouteCollectorProxyInterface as Group;
 
 return function (App $app){
 
-    $app->get('/', [HomeController::class, 'homepage']);
+    $app->get('/', [HomeController::class, 'homepage'])->setName('homepage');
     $app->get('/hello/{name}', [HomeController::class,'hello'])->setName('hello');
-    $app->get('/albums', [SearchController::class,'default'])->setName('album');
-    $app->get('/search', [SearchController::class,'search']);
-    $app->get('/form', [SearchController::class,'form']);
-    $app->post('/form', [SearchController::class,'form']);
+    $app->get('/albums', [SearchController::class,'default'])->setName('albums');
+    $app->get('/search', [SearchController::class,'search'])->setName('search');;
+    $app->get('/form', [SearchController::class,'form'])->setName('form');;
+    $app->post('/form', [SearchController::class,'form'])->setName('form');;
     $app->get('/api', [ApiController::class, 'search'])->setName('apisearch');
     $app->get('/shop', [ShopController::class, 'default'])->setName('shop');
     $app->get('/shop/details/{id:[0-9]+}', [ShopController::class, 'details'])->setName('shopdetails');
     $app->get('/login', [AuthController::class, 'login'])->setName('login');
-    $app->post('/login', [AuthController::class, 'loginAction']);
+    $app->post('/login', [AuthController::class, 'loginAction'])->setName('loginAction');;
     $app->post('/logout', [AuthController::class, 'logoutAction'])->setName('logout');
 
     $app->group('/dashboard', function(Group $group){

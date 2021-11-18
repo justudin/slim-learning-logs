@@ -12,15 +12,14 @@ abstract class BaseController
 
     public function __construct(ContainerInterface $container)
     {
-        $this->view = $container->get('template');
+        $this->view = $container->get('template_twig');
         $this->logger = $container->get('logger');
         $this->session = $container->get('session');
     }
 
+    //template_twig
     protected function render(Response $response, $templateFile, array $data = []): Response
     {
-        $html = $this->view->render($templateFile, $data);
-        $response->getBody()->write($html);
-        return $response;
+        return $this->view->render($response, $templateFile, $data);
     }
 }

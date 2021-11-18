@@ -1,6 +1,7 @@
 .idea/
 .vscode/
 /coverage/
+/cache/*
 /vendor/
 !/logs
 /logs/*

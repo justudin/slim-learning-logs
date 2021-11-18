@@ -1,0 +1,23 @@
+{% extends "layout.html" %}
+
+{% block body %}
+<nav style="--bs-breadcrumb-divider: '>';" aria-label="breadcrumb">
+  <ol class="breadcrumb">
+    <li class="breadcrumb-item"><a href="{{ url_for('shop') }}">Bike e-Shop</a></li>
+    <li class="breadcrumb-item active" aria-current="page">Bike details</li>
+  </ol>
+</nav>
+
+<h1>🚲 {{bike.name}}</h1>
+
+<hr class="px-3"/>
+<div class="container" id="bikes">
+  <p>Type: {{bike.type}}</p>
+  <p>Weight: {{bike.weight}}/5</p>
+  <p>Aero: {{bike.aero}}/5</p>
+</div>
+
+
+<a href="{{ url_for('homepage') }}">Return to homepage</a> </p>
+
+{% endblock %}

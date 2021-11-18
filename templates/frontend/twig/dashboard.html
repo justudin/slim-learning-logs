@@ -1,0 +1,20 @@
+{% extends "layout.html" %}
+
+{% block body %}
+
+<h1>Welcome to dashboard area!</h1>
+<hr class="px-3"/>
+<div class="alert alert-success" role="alert">
+    <p>You are logged in as {{ userEmail }}.
+    <form method="post" action="{{ url_for('logout') }}">
+        <button type="submit" class="btn btn-primary btn-lg">Logout</button>
+    </form>
+    </p>
+</div>
+
+Please check your membership status <a href="{{ url_for('membership') }}">here</a>.
+
+<br/>
+<a href="{{ url_for('homepage') }}">Return to homepage</a> </p>
+
+{% endblock %}
