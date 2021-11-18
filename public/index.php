@@ -29,4 +29,8 @@ $app->get('/api', '\App\Controller\ApiController:search');
 $app->get('/shop', '\App\Controller\ShopController:default');
 $app->get('/shop/details/{id:[0-9]+}', '\App\Controller\ShopController:details');
 
+//development mode:  true, true, true
+//production mode: false, true, true
+$errorMiddleware = $app->addErrorMiddleware(true, true, true);
+
 $app->run();
