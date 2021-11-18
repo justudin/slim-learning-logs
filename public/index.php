@@ -15,9 +15,15 @@ $container->set('template', function (){
     ]);
 });
 
+$container->set('session', function (){
+   return new \SlimSession\Helper();
+});
+
 AppFactory::setContainer($container);
 
 $app = AppFactory::create();
+
+$app->add(new \Slim\Middleware\Session);
 
 $app->get('/', '\App\Controller\HomeController:homepage');
 $app->get('/hello/{name}', '\App\Controller\HomeController:hello');
