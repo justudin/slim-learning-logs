@@ -5,6 +5,9 @@
 /vendor/
 !/logs
 /logs/*
+/var/logs/*
+/var/cache/*
 !/logs/README.md
 .phpunit.result.cache
 composer.lock
+.env
